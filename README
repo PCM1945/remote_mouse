@@ -1,3 +1,0 @@
-#install dependencies 
-pip install python-xlib
-sudo apt install x11-utils  # for xrandr (usually preinstalled)

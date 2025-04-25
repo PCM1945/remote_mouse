@@ -2,7 +2,7 @@ import pyautogui
 import win32api
 import win32con
 import asyncio
-from window.schemas.monitor import Monitor
+from schemas.monitor import Monitor
 class MouseMonitorService:
     def __init__(self, border_threshold=1):
         self.clients = set()

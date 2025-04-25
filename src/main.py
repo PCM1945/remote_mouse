@@ -1,6 +1,6 @@
 import asyncio
-from window.services.monitor_service import MouseMonitorService
-from window.services.ipc_service import IPCWebSocketServer
+from services.monitor_service import MouseMonitorService
+from services.ipc_service import IPCWebSocketServer
 from ui.tray_app import TrayApp
 
 def main():
