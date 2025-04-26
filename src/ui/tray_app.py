@@ -6,7 +6,7 @@ import websockets
 from plyer import notification
 import json
 from pathlib import Path
-from window.services.monitor_service import MouseMonitorService
+from services.monitor_service import MouseMonitorService
 
 CONFIG_PATH = Path("./.mouse_monitor_config.json")
 
@@ -54,16 +54,6 @@ class TrayApp:
             self.save_config()
         return _toggle
 
-    def show_notification(self, title, message):
-        try:
-            notification.notify(
-                title=title,
-                message=message,
-                timeout=0.5  # seconds
-            )
-        except Exception as e:
-            print(f'notification Error: {e}')
-
     def draw_icon(self):
         return Image.open('./assets/tray.ico')
 
@@ -72,9 +62,7 @@ class TrayApp:
         icon.stop()
         self.monitor.stop()
 
-    def on_show_status(self, icon, item):
-        self.show_notification("Mouse Monitor", self.latest_event)
-
+    
     def edge_config_menu(self):
         submenu = []
         for edge in self.edges:
@@ -87,7 +75,6 @@ class TrayApp:
 
     def build_menu(self):
         return Menu(
-            MenuItem("Show Last Event", self.on_show_status),
             MenuItem("Select Edges", self.edge_config_menu()),
             MenuItem("Quit", self.on_quit)
         )
